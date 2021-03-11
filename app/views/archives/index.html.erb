@@ -1,0 +1,21 @@
+<div class="columns is-centered mt-6">
+  <div class="columns is-half">
+	 <% @entries.each do |day, entries| %>
+	   <h2 class="is-size-4 has-text-weight-bold mb-4 has-text-centererd">
+		Entry for <%= day %>
+	   </h2>
+	   <p><%= entries.pluck(:calories).sum %></p>
+	   <% entries.each do |entry| %>
+	    <div class="card">
+		  <div class="card-content">
+		   <strong><%= entry.meal_type %></strong><br/>
+		   <%= entry.calories %> calories,
+		   <%= entry.proteins %>g proteins,
+		   <%= entry.carbohydrates %>g carbohydrates,
+		   <%= entry.fats %>g fats,
+	      </div>
+        </div>
+       <% end %>
+     <% end %>
+  </div>
+</div>  
