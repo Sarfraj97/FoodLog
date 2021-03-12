@@ -1,0 +1,59 @@
+<%  content_for :title do %>
+
+Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
+
+<%end%>
+
+<section class="hero is-link is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+          	<div class="navbar-item">
+            <% if user_signed_in? %>
+            <%= link_to "Create New Entry", new_entry_path, class: "button is-success" %>
+            <%= link_to("Logout", destroy_user_session_path, :method => :delete, class: "button is-danger") %>
+            <% end %>
+            <% if !user_signed_in? %>
+             <%= link_to("Login as a Trainee", new_user_session_path, class: "button is-primary") %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        <% if content_for(:title) %>
+        <%= yield :title %>
+        <% else %>
+          Foodlog
+        <% end %>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot">
+    <nav class="tabs">
+      <div class="container">
+        <ul>
+         
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
