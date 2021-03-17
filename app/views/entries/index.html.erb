@@ -1,26 +1,27 @@
 <div class="columns mt-6 is-centered">
  <% @entries.each do |entry| %>
-  <div class="columns is-one-quarter"> 
+  <div class="column is-one-quarter">
     <div class="card">
       <header class="card-header">
-        <p class="card-header-title"> Meal </p>
+        <p class="card-header-title is-size-6"> Meal </p>
       </header>
       <div class="card-content">
         <div class="content">  
-          <p><span class = "has-text-weight-bold"><%= entry.calories %></span> Calories</p>
-          <p><span class = "has-text-weight-bold"><%= entry.proteins %></span>g Protein</p>
-          <p><span class = "has-text-weight-bold"><%= entry.fats %></span>g fats</p>
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.calories %> kcal Calories</p></span>
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.proteins %>g Protein</p></span>
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.fats %>g fats</p></span>
         </div>
       </div>  
-    </div>
-    <div class="card-footer">    
-        <%= link_to 'Show', entry, class: "card-footer-item" %>
-        <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item" %>
-        <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-footer-item" %>
+     <div class="card-footer">  
+      
+        <%= link_to 'Show', entry, class: "card-footer-item button is-primary is-small" %>
+        <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item button is-info is-small" %>
+        <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-footer-item button is-danger is-small" %>
       </div>
     </div>
   </div>  
  <% end %>
 </div>
-
-
+<div class="is-vcentered">
+<%= link_to 'View all Entries',  view_all_entries_path, class: "button is-success" %>
+</div>

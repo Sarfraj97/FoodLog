@@ -1,9 +1,13 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
-   @today = 
+
   # GET /entries or /entries.json
   def index
-    @entries = Entry.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+     @entries = current_user.entries.todays_entry
+  end
+
+  def view_all
+    @entries = current_user.entries.group_by(&:day)
   end
 
   # GET /entries/1 or /entries/1.json

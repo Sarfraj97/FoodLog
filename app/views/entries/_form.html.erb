@@ -1,3 +1,6 @@
+<div class="card">
+  <div class="card-content">
+    <div class="content">
 <%= form_with(model: entry, local: true) do |form| %>
   <% if entry.errors.any? %>
     <div id="error_explanation">
@@ -12,26 +15,40 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :calories %>
-    <%= form.number_field :calories %>
+    <div class="label">
+      <%= form.label :calories %>
+    </div>
+    <div class="control">
+      <%= form.number_field :calories , class: "input"%>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :proteins %>
-    <%= form.number_field :proteins %>
+    <div class="label">
+      <%= form.label :proteins %>
+    </div>  
+    <div class="control">
+      <%= form.number_field :proteins , class: "input"%>
+    </div>  
   </div>
 
   <div class="field">
-    <%= form.label :fats %>
-    <%= form.number_field :fats %>
+    <div class="label">
+      <%= form.label :fats %>
+    </div>
+    <div class="control">
+      <%= form.number_field :fats , class: "input"%>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>: <%= current_user.name %>
     <%= form.hidden_field :user_id, value:current_user.id, :readonly => true%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "button is-success is-outlined" %>
   </div>
 <% end %>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="columns mt-6 is-centered">
+  <div class="columns is-one-quarter"> 
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title is-size-4"> Meal </p>
+      </header>
+      <div class="card-content">
+        <div class="content">  
+          <p><span class = "has-text-weight-bold is-size-6"><%= @entry.calories %> kcal Calories</p></span>
+          <p><span class = "has-text-weight-bold is-size-6"><%= @entry.proteins %>g Protein</p></span>
+          <p><span class = "has-text-weight-bold is-size-6"><%= @entry.fats %>g fats</p></span>
+        </div>
+      </div>  
+    <div class="card-footer">  
+      <div class="card-footer-item"> 
+        <%= link_to 'Edit', edit_entry_path(@entry), class: "button is-info" %>
+      </div>
+      <div class="card-footer-item">  
+        <%= link_to 'Back', entries_path, class: "button is-primary" %>
+      </div>  
+      </div>
+    </div>
+  </div>  
+ </div>
+</div>
 
-<p>
-  <strong>Calories:</strong>
-  <%= @entry.calories %>
-</p>
 
-<p>
-  <strong>Proteins:</strong>
-  <%= @entry.proteins %>
-</p>
-
-<p>
-  <strong>Fats:</strong>
-  <%= @entry.fats %>
-</p>
-
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>

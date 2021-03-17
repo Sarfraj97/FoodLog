@@ -1,6 +1,6 @@
-<h1>Editing Entry</h1>
+<h1 class="title">Editing Entry</h1>
 
 <%= render 'form', entry: @entry %>
 
-<%= link_to 'Show', @entry %> |
-<%= link_to 'Back', entries_path %>
+<%= link_to 'Show', @entry, class: "button is-dark is-outlined" %> 
+<%= link_to 'Back', entries_path, class: "button is-dark is-outlined" %>

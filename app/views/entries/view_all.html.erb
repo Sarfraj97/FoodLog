@@ -1,0 +1,36 @@
+<div class="columns mt-6">
+ <% @entries.each do |day, entries| %>
+  <div class="column">
+  	<header class="is-size-4">Entry for <%= day %></header>
+  	<nav class="level is-mobile">
+        		<div class="level-item has-text-centered">
+        			<div>
+        				<div class="level-item"><p class="subtitle">Total Calories  : </p>
+        				<p class="subtitle"><%= entries.pluck(:calories).sum %> grams </p></div>
+        				<div class="level-item"><p class="subtitle">Total Proteins  : </p>
+        				<p class="subtitle"><%= entries.pluck(:proteins).sum %> grams</p></div>
+        				<div class="level-item"><p class="subtitle">Total Fats : </p>
+        				<p class="subtitle"><%= entries.pluck(:fats).sum %> grams</p></div>
+        			</div>
+        		</div>
+        	</nav>
+  	<% entries.each do |entry| %>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title is-size-6"> Meal </p>
+      </header>
+      <div class="card-content">
+        <div class="content">  
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.calories %> kcal Calories</p></span>
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.proteins %>g Protein</p></span>
+          <p><span class = "has-text-weight-bold is-size-8"><%= entry.fats %>g fats</p></span>
+        </div>
+      </div>  
+     <% end %>
+    </div>
+  </div>  
+</div>
+ <% end %>
+
+
+

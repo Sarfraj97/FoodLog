@@ -18,13 +18,25 @@ Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
-          	<div class="navbar-item">
+          	
             <% if user_signed_in? %>
+            <div class="navbar-item">
+            <% if !has_role? :admin %>  
             <%= link_to "Create New Entry", new_entry_path, class: "button is-success" %>
-            <%= link_to("Logout", destroy_user_session_path, :method => :delete, class: "button is-danger") %>
             <% end %>
+            </div><div class="navbar-item">
+            <%= link_to("Logout", destroy_user_session_path, :method => :delete, class: "button is-danger") %>
+            </div>
+            <% end %>
+          
             <% if !user_signed_in? %>
-             <%= link_to("Login as a Trainee", new_user_session_path, class: "button is-primary") %>
+             <div class="navbar-item">
+               <%= link_to("Login", new_user_session_path, class: "button is-primary") %>
+             </div>
+             <div class="navbar-item">
+               <%= link_to("Sign Up", new_user_registration_path, class: "button is-primary") %>
+             </div> 
+             </div>
             <% end %>
             </div>
           </div>
@@ -56,4 +68,6 @@ Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
       </div>
     </nav>
   </div>
+
+
 </section>
