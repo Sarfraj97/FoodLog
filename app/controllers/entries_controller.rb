@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def view_all
-    @entries = current_user.entries.group_by(&:day)
+    @entries = current_user.entries.order(created_at: :desc).group_by(&:day)
   end
 
   # GET /entries/1 or /entries/1.json
@@ -25,11 +25,11 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build(entry_params)
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: "Entry was successfully created." }
+        format.html { redirect_to entries_path, notice: "Entry was successfully created." }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to @entry, notice: "Entry was successfully updated." }
+        format.html { redirect_to entries_path, notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }

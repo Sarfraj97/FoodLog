@@ -2,6 +2,9 @@
  <% @manage.each do |user| %>
   <div class="column is-one-quarter">
     <div class="card">
+      <% if user.avatar.attached? %>
+      <%= image_tag(user.avatar) %>
+      <% end %>
       <header class="card-header">
         <p class="card-header-title is-size-6"> Trainee number : <%= user.id%></p>
       </header>

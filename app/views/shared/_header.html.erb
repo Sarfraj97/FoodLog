@@ -1,10 +1,10 @@
 <%  content_for :title do %>
 
-Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
+ Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
 
 <%end%>
 
-<section class="hero is-link is-small">
+<section class="hero is-primary is-small ">
   <!-- Hero head: will stick at the top -->
   <div class="hero-head">
     <nav class="navbar">
@@ -22,9 +22,22 @@ Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
             <% if user_signed_in? %>
             <div class="navbar-item">
             <% if !has_role? :admin %>  
-            <%= link_to "Create New Entry", new_entry_path, class: "button is-success" %>
+            <span class="icon is-large">
+               <i class="fas fa-utensils fa-2x"></i>
+            </span>
+            <%= link_to "Create New Entry", new_entry_path, class: "button is-info" %>
             <% end %>
-            </div><div class="navbar-item">
+            </div>
+           <div class="navbar-item">
+            <span class="icon is-large">
+               <i class="fas fa-user-edit fa-2x"></i>
+            </span>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "button is-success" %>
+           </div>
+            <div class="navbar-item">
+            <span class="icon is-large">
+               <i class="fas fa-sign-out-alt fa-2x"></i>
+            </span>
             <%= link_to("Logout", destroy_user_session_path, :method => :delete, class: "button is-danger") %>
             </div>
             <% end %>
@@ -36,6 +49,7 @@ Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
              <div class="navbar-item">
                <%= link_to("Sign Up", new_user_registration_path, class: "button is-primary") %>
              </div> 
+              
              </div>
             <% end %>
             </div>
@@ -49,25 +63,38 @@ Welcome to Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
+        <% if !user_signed_in? %>
+        Foodlog by Joe Wicks
+        <% else %>
         <% if content_for(:title) %>
-        <%= yield :title %>
+        Welcome <%if user_signed_in?%>
+        <%= current_user.name %><%end%></h1>
+        <span class="icon is-large">
+          <i class="fas fa-dumbbell fa-2x"></i>
+        </span>
+        <h2 class="subtitle"><%= yield :title %></h2>
         <% else %>
           Foodlog
         <% end %>
-      </h1>
+        <% end %>
     </div>
   </div>
 
-  <!-- Hero footer: will stick at the bottom -->
-  <div class="hero-foot">
+ <div class="hero-foot">
     <nav class="tabs">
       <div class="container">
         <ul>
-         
+
+          <li class="has-text-weight-bold is-size-6 has-text-white">
+           <%= link_to("Home", root_path) %>
+          </li>
+          <li class="has-text-weight-bold is-size-6 has-text-white"><a>Exercises</a></li>
+          <li class="has-text-weight-bold is-size-6 has-text-white"><a>About Us</a></li>
+          <li class="has-text-weight-bold is-size-6 has-text-white"><a>Contact Us</a></li>
+          <li class="has-text-weight-bold is-size-6 has-text-white"><a>More</a></li>
+
         </ul>
       </div>
     </nav>
   </div>
-
-
 </section>

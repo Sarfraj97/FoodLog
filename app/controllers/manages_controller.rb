@@ -9,7 +9,7 @@ class ManagesController < ApplicationController
   # GET /manages/1 or /manages/1.json
   def show
     @user = User.find(params[:id])
-    @entries = Entry.where(user_id: params[:id]).group_by(&:day)
+    @entries = Entry.where(user_id: params[:id]).order(created_at: :desc).group_by(&:day)
   end
 
   # GET /manages/new

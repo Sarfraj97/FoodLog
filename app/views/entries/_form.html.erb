@@ -1,6 +1,8 @@
-<div class="card">
+<div class="card mt-6 has-background-primary-light">
   <div class="card-content">
     <div class="content">
+      <h2 class="title">New Entry</h2>
+
 <%= form_with(model: entry, local: true) do |form| %>
   <% if entry.errors.any? %>
     <div id="error_explanation">
@@ -39,10 +41,6 @@
     <div class="control">
       <%= form.number_field :fats , class: "input"%>
     </div>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :user_id, value:current_user.id, :readonly => true%>
   </div>
 
   <div class="actions">
