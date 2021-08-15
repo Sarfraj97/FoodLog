@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
   end
 
   def view_all
+    @test = "making conflict"
     @entries = current_user.entries.order(created_at: :desc).group_by(&:day)
   end
 
