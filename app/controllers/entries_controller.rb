@@ -3,11 +3,11 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
+     @test = "trying to use rebase" 
      @entries = current_user.entries.todays_entry
   end
 
   def view_all
-    @test = "keep this and remove byebug"
     @entries = current_user.entries.order(created_at: :desc).group_by(&:day)
   end
 
